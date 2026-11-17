@@ -34,36 +34,38 @@ const HotCollections = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            <Slider {...sliderSetting}>
-              <div className="text-center">
-                <h2>Hot Collections</h2>
-                <div className="small-border bg-color-2"></div>
-              </div>
-            </Slider>
+            <div className="text-center">
+              <h2>Hot Collections</h2>
+              <div className="small-border bg-color-2"></div>
+            </div>
           </div>
-            {nftInfo?.map((nft) => (
-              <div className="px-2" key={nft.id}>
-                <div className="nft_coll">
-                  <div className="nft_wrap">
-                    <Link to="/item-details">
-                      <img src={nft.nftImage} className="lazy img-fluid" alt="" />
-                    </Link>
-                  </div>
-                  <div className="nft_coll_pp">
-                    <Link to="/author">
-                      <img className="lazy pp-coll" src={nft.authorImage} alt="" />
-                    </Link>
-                    <i className="fa fa-check"></i>
-                  </div>
-                  <div className="nft_coll_info">
-                    <Link to="/explore">
-                      <h4>{nft.title}</h4>
-                    </Link>
-                    <span>ERC-{nft.code}</span>
+          <div className="col-1g-12">
+            <Slider {...sliderSetting}>
+              {nftInfo?.map((nft) => (
+                <div className="px-2" key={nft.id}>
+                  <div className="nft_coll">
+                    <div className="nft_wrap">
+                      <Link to="/item-details">
+                        <img src={nft.nftImage} className="lazy img-fluid" alt="" />
+                      </Link>
+                    </div>
+                    <div className="nft_coll_pp">
+                      <Link to="/author">
+                        <img className="lazy pp-coll" src={nft.authorImage} alt="" />
+                      </Link>
+                      <i className="fa fa-check"></i>
+                    </div>
+                    <div className="nft_coll_info">
+                      <Link to="/explore">
+                        <h4>{nft.title}</h4>
+                      </Link>
+                      <span>ERC-{nft.code}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </Slider>
+          </div>
         </div>
       </div>
     </section>
