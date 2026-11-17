@@ -39,7 +39,7 @@ const HotCollections = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          <div className="col-1g-12">
+          <div className="col-lg-12">
             <Slider {...sliderSetting}>
               {nftInfo?.map((nft) => (
                 <div className="px-2" key={nft.id}>
