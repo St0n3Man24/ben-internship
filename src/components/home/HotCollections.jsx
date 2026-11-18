@@ -48,7 +48,7 @@ const HotCollections = () => {
       const data = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections`);
       setNftInfo(data.data);
 
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 1800));
       setLoading(false);
     };
     fetchData();
