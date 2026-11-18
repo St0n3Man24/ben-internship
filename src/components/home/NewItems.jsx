@@ -19,17 +19,6 @@ const NewItems = () => {
     fetchNfts();
   }, []);
 
-  requestAnimationFrame(setTimer);
-
-  function setTimer() {
-    let millisecondsElapsed = Date.now();
-    let secondsElapsed = millisecondsElapsed / 1000;
-    let minutesElapsed = secondsElapsed / 60;
-    let hoursElapsed = minutesElapsed / 24;
-
-    requestAnimationFrame(setTimer);
-  };
-
   return (
     <section id="section-items" className="no-bottom">
       <div className="container">
