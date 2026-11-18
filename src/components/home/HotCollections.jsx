@@ -10,6 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 const HotCollections = () => {
   const [nftInfo, setNftInfo] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const sliderSetting = {
     dots: true,
@@ -42,12 +43,14 @@ const HotCollections = () => {
     ]
   };
 
-  async function fetchData() {
-    const data = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections`);
-    setNftInfo(data.data);
-  };
-
   useEffect(() => {
+    async function fetchData() {
+      const data = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections`);
+      setNftInfo(data.data);
+
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      setLoading(false);
+    };
     fetchData();
   }, []);
 
@@ -64,7 +67,20 @@ const HotCollections = () => {
           </div>
           <div className="col-lg-12">
             <Slider {...sliderSetting}>
-              {nftInfo?.map((nft) => (
+              {loading ? (
+                Array.from({ length: 4 }).map((_, index) => (
+                  <div className="px-2" key={index}>
+                    <div className="nft_coll">
+                      <div className="nft_wrap img--skeleton"></div>
+                      <div className="nft_coll_pp img--skeleton"></div>
+                      <div className="nft_coll_info">
+                        <div className="nft_coll h4--skeleton"></div>
+                        <div className="nft_coll span--skeleton"></div>
+                      </div>
+                    </div>
+                  </div>
+                ))) : (
+              nftInfo?.map((nft) => (
                 <div className="px-2" key={nft.id}>
                   <div className="nft_coll">
                     <div className="nft_wrap">
@@ -86,7 +102,7 @@ const HotCollections = () => {
                     </div>
                   </div>
                 </div>
-              ))}
+              )))}
             </Slider>
           </div>
         </div>
