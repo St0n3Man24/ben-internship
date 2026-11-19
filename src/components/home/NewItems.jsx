@@ -4,15 +4,17 @@ import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Countdown from "./Countdown";
 
 const NewItems = () => {
   const [nfts, setNfts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [now, setNow] = useState(Date.now);
 
   const sliderSetting = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 100,
     slidesToShow: 4,
     slidesToScroll: 1,
     responsive: [
@@ -51,21 +53,10 @@ const NewItems = () => {
     fetchNfts();
   }, []);
 
-  // function calcTimeLeft({ expiryDate }) {
-  //   const currentTime = new Date();
-  //   const expiredTime = new Date(expiryDate);
-  //   const difference = expiredTime - currentTime;
-
-  //   let timeLeft = {};
-  //   if (difference > 0) {
-  //     timeLeft = {
-  //       hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-  //       minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-  //       seconds: Math.floor((difference % (1000 * 60)) / 1000),
-  //     };
-  //   }
-  //   return timeLeft;
-  // };
+  useEffect(() => {
+    const timer = setInterval(() => setNow(Date.now()), 1000)
+    return () => clearInterval(timer)
+  }, []);
 
   return (
     <section id="section-items" className="no-bottom">
@@ -93,7 +84,7 @@ const NewItems = () => {
                   </div>
                 ))) : (
                 nfts?.map((nft) => (
-                  <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={nft.id}>
+                  <div className="px-2" key={nft.id}>
                     <div className="nft__item">
                       <div className="author_list_pp">
                         <Link
@@ -106,7 +97,7 @@ const NewItems = () => {
                           <i className="fa fa-check"></i>
                         </Link>
                       </div>
-                      <div className="de_countdown">{nft.expiryDate}</div>
+                      {nft.expiryDate && <Countdown expiryDate={nft.expiryDate} now={now} />}
 
                       <div className="nft__item_wrap">
                         <div className="nft__item_extra">
@@ -127,7 +118,7 @@ const NewItems = () => {
                           </div>
                         </div>
 
-                        <Link to="/item-details">
+                        <Link to={`/item-details/${nft.id}`}>
                           <img
                             src={nft.nftImage}
                             className="lazy nft__item_preview"
@@ -136,7 +127,7 @@ const NewItems = () => {
                         </Link>
                       </div>
                       <div className="nft__item_info">
-                        <Link to="/item-details">
+                        <Link to={`/item-details/${nft.id}`}>
                           <h4>{nft.title}</h4>
                         </Link>
                         <div className="nft__item_price">{nft.price} ETH</div>

@@ -13,7 +13,7 @@ const HotCollections = () => {
   const sliderSetting = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 100,
     slidesToShow: 4,
     slidesToScroll: 1,
     responsive: [
