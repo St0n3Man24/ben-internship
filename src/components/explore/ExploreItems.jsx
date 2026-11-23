@@ -8,39 +8,29 @@ const ExploreItems = () => {
     const [now, setNow] = useState(Date.now);
     const [visibleNfts, setVisibleNfts] = useState(8);
     const [loading, setLoading] = useState(true);
+    const [filter, setFilter] = useState("");
 
   useEffect(() => {
     async function nftData() {
-      const data = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/explore`);
+      setLoading(true);
+      const data = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/explore${filter ? `?filter=${filter}` : ""}`);
       setNfts(data.data);
 
       await new Promise(resolve => setTimeout((resolve), 2000));
       setLoading(false);
     };
     nftData();
-  }, []);
+  }, [filter]);
 
   useEffect(() => {
       const timer = setInterval(() => setNow(Date.now()), 1000)
       return () => clearInterval(timer)
     }, []);
 
-    function filterNfts(filter) {
-      if (filter === "price_low_to_high") (
-        setNfts(nfts.slice().sort((a, b) => (a.price - b.price)))
-      )
-      if (filter === "price_high_to_low") (
-        setNfts(nfts.slice().sort((a, b) => (b.price - a.price)))
-      )
-      if (filter === "likes_high_to_low") (
-        setNfts(nfts.slice().sort((a, b) => (b.likes - a.likes)))
-      )
-    };
-
   return (
     <>
       <div>
-        <select id="filter-items" defaultValue="" onChange={(e) => filterNfts(e.target.value)}>
+        <select id="filter-items" defaultValue="" onChange={(e) => setFilter(e.target.value)}>
           <option value="">Default</option>
           <option value="price_low_to_high">Price, Low to High</option>
           <option value="price_high_to_low">Price, High to Low</option>
