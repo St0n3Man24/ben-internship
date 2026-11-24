@@ -57,7 +57,7 @@ const TopSellers = () => {
                       </Link>
                     </div>
                     <div className="author_list_info">
-                      <Link to="/author">{nft.authorName}</Link>
+                      <Link to={`/author?author=${nft.authorId}`}>{nft.authorName}</Link>
                       <span>{nft.price} ETH</span>
                     </div>
                   </li>
