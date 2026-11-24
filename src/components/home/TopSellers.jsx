@@ -47,7 +47,7 @@ const TopSellers = () => {
                 {sellers?.map((nft) => (
                   <li key={nft.id}>
                     <div className="author_list_pp">
-                      <Link to="/author">
+                      <Link to={`/author?author=${nft.authorId}`}>
                         <img
                           className="lazy pp-author"
                           src={nft.authorImage}
@@ -57,7 +57,7 @@ const TopSellers = () => {
                       </Link>
                     </div>
                     <div className="author_list_info">
-                      <Link to="/author">{nft.authorName}</Link>
+                      <Link to={`/author?author=${nft.authorId}`}>{nft.authorName}</Link>
                       <span>{nft.price} ETH</span>
                     </div>
                   </li>
