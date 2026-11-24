@@ -95,24 +95,6 @@ const Author = () => {
                   </div>
                 </div>
               ) : (
-                // <div className="col-md-12">
-                //   <div className="d_profile de-flex">
-                //     <div className="de-flex-col">
-                //       <div className="profile_avatar">
-                //         <div className="profile_avatar img--skeleton"></div>
-                //         <div className="profile_name--skeleton"></div>
-                //         <div className="profile_username--skeleton"></div>
-                //         <div className="profile_wallet--skeleton"></div>
-                //       </div>
-                //     </div>
-                //   </div>
-                //   <div className="profile_follow de-flex">
-                //     <div className="de-flex-col">
-                //       <div className="profile_follower--skeleton"></div>
-                //       <div className="btn-main--skeleton"></div>
-                //     </div>
-                //   </div>
-                // </div>
                 <div className="col-md-12">
                   <div className="d_profile de-flex">
                     <div className="de-flex-col">
