@@ -10,7 +10,7 @@ const Author = () => {
 
   useEffect(() => {
     async function authorData() {
-      const data = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/authors`);
+      const data = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/author`);
       setAuthors(data.data);
     };
     authorData();
@@ -33,11 +33,11 @@ const Author = () => {
           <div className="container">
             <div className="row">
               <div className="col-md-12">
-                {authors.map((author) => {
+                {authors.map((author) => (
                   <div className="d_profile de-flex">
                     <div className="de-flex-col">
                       <div className="profile_avatar">
-                        <img src={author.authorImage} alt="" />
+                        <img src={AuthorImage} alt="" />
 
                         <i className="fa fa-check"></i>
                         <div className="profile_name">
@@ -63,7 +63,7 @@ const Author = () => {
                       </div>
                     </div>
                   </div>
-                })}
+                ))}
                 {/* <div className="d_profile de-flex">
                   <div className="de-flex-col">
                     <div className="profile_avatar">
