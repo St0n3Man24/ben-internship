@@ -52,6 +52,10 @@ const Author = () => {
     };
   }, [authorId]);
 
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+
   if (error) return <p role="alert">{error}</p>;
   if (!author && !loading) return <p>Author not found.</p>;
 
