@@ -52,6 +52,10 @@ const Author = () => {
     };
   }, [authorId]);
 
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+
   if (error) return <p role="alert">{error}</p>;
   if (!author && !loading) return <p>Author not found.</p>;
 
@@ -123,9 +127,9 @@ const Author = () => {
                         <div className="profile_follower">
                           {author.followers + (following ? 1 : 0)} followers
                         </div>
-                        <Link to="#" className="btn-main" onClick={handleFollow}>
+                        <button className="btn-main" onClick={handleFollow}>
                           {following ? "Unfollow" : "Follow"}
-                        </Link>
+                        </button>
                       </div>
                     </div>
                   </div>
