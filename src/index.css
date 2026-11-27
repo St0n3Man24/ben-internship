@@ -354,3 +354,13 @@
     background-position: -200% 0;
   }
 }
+
+/* Animation */
+
+[data-aos="fade-up"] {
+  transform: translate3d(0, 32px, 0) !important;
+}
+
+[data-aos="fade-up"].aos-animate {
+  transform: translate3d(0, 0, 0) !important;
+}
