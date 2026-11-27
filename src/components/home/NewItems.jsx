@@ -5,11 +5,17 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Countdown from "./Countdown";
+import AOS from 'aos';
+import "aos/dist/aos.css";
 
 const NewItems = () => {
   const [nfts, setNfts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [now, setNow] = useState(Date.now);
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
   const sliderSetting = {
     dots: true,
@@ -64,7 +70,7 @@ const NewItems = () => {
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">
-              <h2>New Items</h2>
+              <h2 data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">New Items</h2>
               <div className="small-border bg-color-2"></div>
             </div>
           </div>

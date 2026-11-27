@@ -1,8 +1,15 @@
 import React, { useEffect } from "react";
 import SubHeader from "../images/subheader.jpg";
 import ExploreItems from "../components/explore/ExploreItems";
+import AOS from 'aos';
+import "aos/dist/aos.css";
 
 const Explore = () => {
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -21,7 +28,7 @@ const Explore = () => {
             <div className="container">
               <div className="row">
                 <div className="col-md-12 text-center">
-                  <h1>Explore</h1>
+                  <h1 data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">Explore</h1>
                 </div>
                 <div className="clearfix"></div>
               </div>

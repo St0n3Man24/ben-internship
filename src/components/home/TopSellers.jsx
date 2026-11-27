@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import AOS from 'aos';
+import "aos/dist/aos.css";
 
 const TopSellers = () => {
   const [sellers, setSellers] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
   useEffect(() => {
     async function sellersData() {
@@ -22,7 +28,7 @@ const TopSellers = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            <div className="text-center">
+            <div className="text-center" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">
               <h2>Top Sellers</h2>
               <div className="small-border bg-color-2"></div>
             </div>

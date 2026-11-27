@@ -4,11 +4,17 @@ import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import AOS from 'aos';
+import "aos/dist/aos.css";
 
 
 const HotCollections = () => {
   const [nftInfo, setNftInfo] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
   const sliderSetting = {
     dots: true,
@@ -58,7 +64,7 @@ const HotCollections = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            <div className="text-center">
+            <div className="text-center" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">
               <h2>Hot Collections</h2>
               <div className="small-border bg-color-2"></div>
             </div>

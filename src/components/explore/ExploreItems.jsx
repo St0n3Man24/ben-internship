@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Countdown from "../home/Countdown";
+import AOS from 'aos';
+import "aos/dist/aos.css";
 
 const ExploreItems = () => {
     const [nfts, setNfts] = useState([]);
@@ -9,6 +11,10 @@ const ExploreItems = () => {
     const [visibleNfts, setVisibleNfts] = useState(8);
     const [loading, setLoading] = useState(true);
     const [filter, setFilter] = useState("");
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
   useEffect(() => {
     async function nftData() {
@@ -112,7 +118,7 @@ const ExploreItems = () => {
           </div>
         ))
       )}
-      <div className="col-md-12 text-center">
+      <div className="col-md-12 text-center" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">
         {visibleNfts < nfts.length && (
           <Link to="" id="loadmore" className="btn-main lead" onClick={() => setVisibleNfts((prev) => prev + 4)}>
             Load more
